@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/views/components/card_produit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -25,11 +26,12 @@ class HomeView extends StatelessWidget {
               child: Column(
                 children: const [
                   Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Buy art, it's easy!",
-                        style: TextStyle(fontWeight: FontWeight.w900),
-                      )),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Buy art, it's easy!",
+                      style: TextStyle(fontWeight: FontWeight.w900),
+                    ),
+                  ),
                   SizedBox(height: 10),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -45,14 +47,22 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: GridView.builder(
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                itemCount: 4,
-                itemBuilder: ((context, index) => Card(color: Colors.green,child: Text("4"),))),
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.91,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10),
+                itemCount: 50,
+                itemBuilder: ((context, index) => cardProduit(context,
+                    "Ornella Pocetti", "Erinia ottom canvas", 2500)),
+              ),
+            ),
           )
         ],
       ),
