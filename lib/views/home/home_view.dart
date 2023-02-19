@@ -1,43 +1,59 @@
 import 'package:flutter/material.dart';
 
-class IndexView extends StatefulWidget {
-  const IndexView({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
-  @override
-  State<IndexView> createState() => _IndexViewState();
-}
-
-class _IndexViewState extends State<IndexView> {
-  int index = 0;
-  List listView = <Widget>[
-    const Text("Home"),
-    const Text("Category"),
-    const Text("Application"),
-    const Text("Setting")
-  ];
-
-  changePage(indexBar){
-    setState(() {
-      index = indexBar;
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: listView[index],
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        currentIndex: index,
-        onTap: changePage,
-        selectedItemColor: Colors.black,
-        showSelectedLabels: true,
-        selectedIconTheme: const IconThemeData(color: Colors.black),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: "Category"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings")
+      appBar: AppBar(
+        backgroundColor: Colors.grey[350],
+        actions: const [
+          IconButton(onPressed: null, icon: Icon(Icons.search)),
+          IconButton(onPressed: null, icon: Icon(Icons.shopping_bag_outlined)),
+          IconButton(onPressed: null, icon: Icon(Icons.menu))
+        ],
+      ),
+      body: ListView(
+        children: [
+          Container(
+            color: Colors.grey[350],
+            height: 100,
+            padding: const EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            child: SizedBox(
+              child: Column(
+                children: const [
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Buy art, it's easy!",
+                        style: TextStyle(fontWeight: FontWeight.w900),
+                      )),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Browse by collection",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                itemCount: 4,
+                itemBuilder: ((context, index) => Card(color: Colors.green,child: Text("4"),))),
+          )
         ],
       ),
     );

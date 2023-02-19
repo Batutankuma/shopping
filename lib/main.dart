@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/views/home/home_view.dart';
+import 'package:shopping/views/index.dart';
 
 void main() {
   runApp(const MyApp());
