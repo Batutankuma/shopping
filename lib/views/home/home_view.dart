@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/models/product_models.dart';
 import 'package:shopping/views/components/card_produit.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+  //liste des produit
+  final List<Product> _listProduct = listProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +61,10 @@ class HomeView extends StatelessWidget {
                     childAspectRatio: 0.91,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10),
-                itemCount: 50,
-                itemBuilder: ((context, index) => cardProduit(context,
-                    "Ornella Pocetti", "Erinia ottom canvas", 2500)),
+                itemCount: _listProduct.length,
+                itemBuilder: ((context, index) => cardProduit(
+                    context,
+                    _listProduct[index])),
               ),
             ),
           )

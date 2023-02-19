@@ -11,7 +11,7 @@ class IndexView extends StatefulWidget {
 class _IndexViewState extends State<IndexView> {
   int index = 0;
   List listView = <Widget>[
-    const HomeView(),
+    HomeView(),
     const Text("Category"),
     const Text("Application"),
     const Text("Setting")

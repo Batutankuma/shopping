@@ -1,19 +1,20 @@
 //create card produit
 import 'package:flutter/material.dart';
+import 'package:shopping/models/product_models.dart';
 import 'package:shopping/views/components/description_produit.dart';
 
-Widget cardProduit(BuildContext context, String title, String description, double price) {
+Widget cardProduit(BuildContext context, Product product) {
   return GestureDetector(
-    onTap: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => DescriptionProduit()))),
+    onTap: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => DescriptionProduit(product: product)))),
     child: Card(
       elevation: 0.0,
       child: SizedBox(
         child: Column(
           children: [
             //image produit
-            const Flexible(
+            Flexible(
               flex: 6,
-              child: Placeholder(color: Colors.pink),
+              child: Image.network(product.image),
             ),
             const SizedBox(height: 10),
             //title produit
@@ -22,7 +23,7 @@ Widget cardProduit(BuildContext context, String title, String description, doubl
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  title,
+                  product.title,
                   maxLines: 1,
                   style: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w600),
@@ -35,7 +36,7 @@ Widget cardProduit(BuildContext context, String title, String description, doubl
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  description,
+                  product.description,
                   maxLines: 2,
                   style: const TextStyle(color: Colors.grey),
                 ),
@@ -47,7 +48,7 @@ Widget cardProduit(BuildContext context, String title, String description, doubl
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "${price.toString()} \$",
+                  "${product.price.toString()} \$",
                   maxLines: 1,
                   style: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w600),
