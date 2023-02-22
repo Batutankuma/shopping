@@ -4,6 +4,7 @@ import 'package:shopping/models/product_models.dart';
 class FavotireController extends GetxController {
   //variable global table favorite
   final favorite = <Product>[].obs;
+  final name = ''.obs;
 
   //add favorite produit
   void addFavorite(Product product) {
@@ -13,7 +14,6 @@ class FavotireController extends GetxController {
       favorite.add(product);
     }
   }
-
   bool existFavorite(product) {
     if (favorite.contains(product)) {
       return true;
@@ -21,4 +21,6 @@ class FavotireController extends GetxController {
       return false;
     }
   }
+
+  void changeName() => name.value = 'name3';
 }
