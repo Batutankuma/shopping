@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/views/home/favoris_view.dart';
 import 'package:shopping/views/home/home_view.dart';
 
 class IndexView extends StatefulWidget {
@@ -13,7 +14,7 @@ class _IndexViewState extends State<IndexView> {
   List listView = <Widget>[
     HomeView(),
     const Text("Category"),
-    const Text("Application"),
+    const FavoriteView(),
     const Text("Setting")
   ];
 

@@ -8,6 +8,16 @@ class Product {
 
   Product(this.id, this.title, this.price, this.category, this.description,
       this.image);
+
+  factory Product.fromJson(Map<String,dynamic> json){
+    return Product(json['id'],json['title'], json['price'], json['category'], json['description'], json['image']);
+  }
+
+  
+
+  List<Product> parseProduct(data){
+    return data.map<Product>((json)=> Product.fromJson(json));
+  }
 }
 
 List<Product> listProduct = [

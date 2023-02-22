@@ -1,4 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shopping/controllers/favorite_ctr.dart';
 import 'package:shopping/models/product_models.dart';
 
 class DescriptionProduit extends StatelessWidget {
@@ -7,6 +11,11 @@ class DescriptionProduit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FavotireController favotireController = Get.put(FavotireController());
+
+    //exist icons
+    bool existIcon = false;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -27,12 +36,18 @@ class DescriptionProduit extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    //alignement btn follwers
+                    //alignement btn favorite
                     Align(
                       alignment: Alignment.topRight,
                       child: ElevatedButton.icon(
-                        onPressed: null,
-                        icon: const Icon(Icons.favorite),
+                        onPressed: () {
+                          favotireController.addFavorite(product);
+                        },
+                        // ignore: dead_code
+                        icon: Obx(() =>
+                            favotireController.existFavorite(product)
+                                ? const Icon(Icons.favorite, color: Colors.red)
+                                : const Icon(Icons.favorite)),
                         label: const Text("Follow"),
                       ),
                     ),
