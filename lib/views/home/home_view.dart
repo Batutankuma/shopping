@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/models/product_models.dart';
-import 'package:shopping/views/components/card_produit.dart';
+import 'package:get/get.dart';
+import 'package:shopping/controllers/favorite_ctr.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
   //liste des produit
-  final List<Product> _listProduct = listProduct;
+  final FavotireController favotireController = Get.put(FavotireController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +61,20 @@ class HomeView extends StatelessWidget {
                     childAspectRatio: 0.91,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10),
-                itemCount: _listProduct.length,
-                itemBuilder: ((context, index) => cardProduit(
-                    context,
-                    _listProduct[index])),
+                itemCount: 0,
+                itemBuilder: ((context, index) => const Text("data"))
               ),
             ),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print(favotireController.readTest());
+        },
+        child: const Center(
+          child: Icon(Icons.favorite),
+        ),
       ),
     );
   }

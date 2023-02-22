@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping/controllers/favorite_ctr.dart';
@@ -12,9 +10,6 @@ class DescriptionProduit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FavotireController favotireController = Get.put(FavotireController());
-
-    //exist icons
-    bool existIcon = false;
 
     return Scaffold(
       appBar: AppBar(
