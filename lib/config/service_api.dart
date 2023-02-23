@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class ProviderServices extends GetConnect {
   //url de base
-  final String urlbase = "https://fakestoreapi.com";
+  final String urlbase = "fakestoreapi.com";
+  final client = http.Client();
 
   //create
   Future<Response> create(url, data) async {
@@ -18,6 +20,14 @@ class ProviderServices extends GetConnect {
   //find
   find(url) async {
     try {
+      var response = await client.get(Uri.https(urlbase,'/$url'));
+      if (response.statusCode == 400 || response.statusCode == 401) throw Exception(response.body);
+      return response.body.toString();
+    } catch (e) {
+      return Future.error(e);
+    }
+    /**
+     * try {
       // ignore: unused_local_variable
       var response = await get("$urlbase/$url");
       //if code api 400 and 401 send message Error
@@ -27,6 +37,7 @@ class ProviderServices extends GetConnect {
     } catch (e) {
       return Future.error(e);
     }
+     */
   }
 
   //find by

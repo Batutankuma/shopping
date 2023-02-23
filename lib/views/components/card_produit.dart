@@ -5,7 +5,10 @@ import 'package:shopping/views/components/description_produit.dart';
 
 Widget cardProduit(BuildContext context, Product product) {
   return GestureDetector(
-    onTap: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => DescriptionProduit(product: product)))),
+    onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: ((context) => DescriptionProduit(product: product)))),
     child: Card(
       elevation: 0.0,
       child: SizedBox(
